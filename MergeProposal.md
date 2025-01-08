@@ -8,7 +8,7 @@ After the MP is approved, if you have upload rights you can upload the package
 directly via 'dput'. If you do not have upload rights, you'll work with a
 "sponsor" who will do the upload for you.
 
-## Opening a merge proposal 
+## Opening a merge proposal
 
 ### Prepare a Description
 
@@ -113,7 +113,7 @@ It's in main, so we won't use `canonical-server-motu-reviewers`. We can use
 
 ```bash
 $ ubuntu-upload-permission -a postfix
-Please enter password for encrypted keyring: 
+Please enter password for encrypted keyring:
 All upload permissions for postfix:
 
 Component (main)
@@ -169,14 +169,14 @@ The sponsor will tag the upload and `dput` it to where it belongs.
 
 If a merge proposal should no longer land as-is, you have four options:
 
-1. *Mark it Rejected* 
-    
+1. *Mark it Rejected*
+
    You can do this by changing the "Status" of the merge proposal from near
    the top left of the web UI. Doing this will remove it from the
    [Active Reviews page](https://code.launchpad.net/~canonical-server-reporter/+activereviews).
 
 1. *Force push a replacement*
-   
+
    If the essential topic of the change should remain, but the proposed
    changes need to be completely replaced, then you can force push to the
    source branch. This will cause all previous merge proposal comments and the
@@ -184,7 +184,7 @@ If a merge proposal should no longer land as-is, you have four options:
    proposing a replacement set of commits.
 
 1. *Supersede the merge proposal*
-   
+
    You can do this by using the "Resubmit proposal" link near the top right of
    the web UI. This allows you to create a replacement merge proposal that
    links to the one being superseded. The supserseded merge proposal will be
@@ -192,12 +192,12 @@ If a merge proposal should no longer land as-is, you have four options:
    a fresh set of comments, but without losing the previous history.
 
 1. *Delete the merge proposal*
-  
+
    You can do this by using the "Delete proposal to merge" link near the top
    right of the web UI. This should generally only be done as a last resort
    since it will lose all history, such as comments - as if the merge proposal
    had never existed.
-   
+
    **Note**: This might be necessary for appropriateness or legal reasons, but
    normally we prefer to use one of the other options since retaining the
    history of what happened may be useful in the future.

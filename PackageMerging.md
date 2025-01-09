@@ -1021,10 +1021,23 @@ $ echo "echo abc >test.txt" | at now + 1 minute && sleep 1m && cat test.txt && r
 > Git branches with `%` in name don't work. Use something like `_`.
 
 ```bash
-$ git ubuntu submit --target-branch debian/sid
+$ git ubuntu submit --reviewer $REVIEWER --target-branch debian/sid
 Your merge proposal is now available at: https://code.launchpad.net/~kstenerud/ubuntu/+source/at/+git/at/+merge/358655
 If it looks OK, please move it to the 'Needs Review' state.
 ```
+
+Where `$REVIEWER` is the team (or user) on Launchpad that you need to look at
+your change, for instance `canonical-foundations`, `canonical-public-cloud`, or
+similar.
+
+**If you do not have upload rights for this package, use `ubuntu-sponsors`
+here.** This will add your Merge Proposal to the [Ubuntu sponsoring
+queue](http://sponsoring-reports.ubuntu.com/general.html) so people with upload
+rights for that package may eventually review it for you.
+
+Omitting the `--reviewer` field will request a review from the Ubuntu Server
+team. If you are unsure if your package should be reviewed by the Server team,
+please send it to the sponsoring queue instead (as described above).
 
 * Using a target branch of `debian/sid` may seem wrong, but is a workaround
   for LP: #1976112

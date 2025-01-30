@@ -263,6 +263,47 @@ List of this and further related examples:
 | LTS+1 | 2.7-2ubuntu1 | 3.1~22.10.1 |
 | LTS+2 | 2.7-2ubuntu1 | 3.1~23.04.1 |
 
+## Version: almost native packages
+
+Let us be clear, _almost native packages_ is not a clear definition, but some have evolved that way.
+An example is snapd, which is packaged like a native package in Ubuntu with versions like `2.67+25.04`,
+the content matching 1:1 what is upstream including the debian/* being there, and being packaged as `3.0 (native)`.
+But the packages versions are nowadays no more _defined_ by these native uploads to Ubuntu.
+There actually is a [separate upstream project with proper releases](https://github.com/canonical/snapd/tags).
+
+Furthermore the Debian packaging switched over to proper upstream/downstream packaging with
+orig tarball, debian additions and a version like `2.67-1` and format being `3.0 (quilt)`.
+
+Due to that some of the normal rules no more apply.
+Changing the example `2.67` to `2.67.1` is no more just a Ubuntu native version choice.
+It represents a new upstream version in the upstream project which might not exist or not match.
+
+Furthermore the example of snapd is also usually backported with the same content to all active releases.
+Combined that makes this an uncommon mix of the rules usually applied to:
+
+* native package
+* backport from upstream
+
+Let us define how such a case could be handled for the example of snapd:
+
+* The first element of the version matches the upstream version it represents, like `2.67`
+* Since this is backported to multiple releases at the same version, but being native can't have an `-X` or `ubuntuX` the pre-release suffix is added via `+YY.MM`
+* If iterations on the same upstream version and for the same target Ubuntu release are needed add an increment counter `.x" as suffix
+
+| Previous            | New upstream 2.67 | Changes inside of 2.66 |
+| ------------------- | ----------------- | ---------------------- |
+| LTS: 2.66+24.04     | 2.67+24.04        | 2.66+24.04.1           |
+| Devel: 2.66+25.04   | 2.67+25.04        | 2.66+25.04.1           |
+| LTS: 2.66+24.04.1   | 2.67+24.04        | 2.66+24.04.2           |
+| Devel: 2.66+25.04.1 | 2.67+25.04        | 2.66+25.04.2           |
+
+> Yes, no more being a _real_ native package means this could also become
+> `2.68-1` or `2.68-0ubuntu1` now and thereby be more "normal" rules apply, but
+> until the release process can handle that the above is an example how we can
+> apply the same rules outlined here to almost any case and still ensure
+> upgradability and some reasonable instant insight looking at only the
+> version number.
+
 ## Version: Undoing mistakes
 
 In a very rare case where an upgrade to a new upstream version of a package
